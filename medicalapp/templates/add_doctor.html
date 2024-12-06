@@ -1,0 +1,104 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+<!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5 mt-4">
+            <h1 class="display-2 text-white mb-3 animated slideInDown">Add Doctor</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page">Add Doctor</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+<!-- Feedback Start -->
+    <div class="container-fluid py-3">
+        <div class="col-lg-10 container" style="background-color:#20c997; border-radius: 15px; padding: 40px;">
+            <div class="row g-2">
+                <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.5s">
+                    <h2 class="mb-4 text-center"> Add Doctor</h2>
+                    <form class="row g-3" method="post">
+                        {% csrf_token %}
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="doc_name" id="doc_name" placeholder="Doctor Name">
+                                <label for="doc_name">Doctor Name</label>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="email" class="form-control" name="doc_email" id="doc_email" placeholder="Doctor Email">
+                                <label for="doc_email">Doctor Email</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="doc_contact" id="doc_contact" placeholder="Doctor Contact">
+                                <label for="doc_contact">Doctor Contact</label>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="specialization" id="specialization" placeholder="Specialization">
+                                <label for="specialization">Specialization</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="hospital_name" id="hospital_name" placeholder="Hospital Name">
+                                <label for="hospital_name">Hospital Name</label>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="hospital_address" id="hospital_address" placeholder="Hospital Address">
+                                <label for="hospital_address">Hospital Address</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="city" id="city" placeholder="City">
+                                <label for="city">City</label>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="qualified" id="qualified" placeholder="Qualifications">
+                                <label for="qualified">Qualifications</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="experience" id="experience" placeholder="Experience">
+                                <label for="experience">Experience</label>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="apt_fees" id="apt_fees" placeholder="Appointment Fee">
+                                <label for="apt_fees">Appointment Fee</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="abl_day" id="abl_day" placeholder="Available Days">
+                                <label for="abl_day">Available Days</label>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="time" class="form-control" name="abl_time" id="abl_time">
+                                <label for="abl_time">Available Timings</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="treat_cond" id="treat_cond" placeholder="Treatable Conditions">
+                                <label for="treat_cond">Treatable Conditions</label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feedback End -->
+
+
+{% endblock %}
