@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: vitalcare
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn Medical_Recommendation_System_django_ml.wsgi
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.7
