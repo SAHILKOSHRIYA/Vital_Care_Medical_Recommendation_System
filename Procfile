@@ -1,0 +1,1 @@
+web: gunicorn Medical_Recommendation_System_django_ml.wsgi

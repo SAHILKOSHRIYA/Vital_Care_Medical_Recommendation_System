@@ -1,0 +1,144 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -57px;
+  position: relative;
+  background:blue;
+  color:yellow;
+  z-index: 2;
+  padding:20px;
+}
+
+.field-icon:hover {
+  cursor:pointer;
+}
+</style>
+<!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5 mt-4">
+            <h1 class="display-2 text-white mb-3 animated slideInDown">Update Doctor</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page">Update Doctor</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+<!-- Feedback Start -->
+    <div class="container-fluid py-3">
+        <div class="col-lg-10 container" style="background-color:#20c997; border-radius: 15px; padding: 40px;">
+            <div class="row g-2">
+                <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.5s">
+                    <h2 class="mb-4 text-center"> Update Doctor</h2>
+                    <form class="row g-3" method="post">
+                        {% csrf_token %}
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="doc_name" id="doc_name" value="{{data.doc_name}}" placeholder="Doctor Name">
+                                <label for="doc_name">Doctor Name</label>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" name="doc_email" id="mobile" value="{{data.doc_email}}" placeholder="Doctor Email">
+                                <span class="fa fa-eye field-icon toggle-password"></span>
+                                <label for="mobile">Doctor Email</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" name="doc_contact" id="email" value="{{data.doc_contact}}" placeholder="Doctor Contact">
+                                <label for="email">Doctor Contact</label>
+                                <span class="fa fa-eye field-icon toggle-password-2"></span>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="specialization" id="specialization" value="{{data.specialization}}" placeholder="Specialization">
+                                <label for="specialization">Specialization</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="hospital_name" id="hospital_name" value="{{data.hospital_name}}" placeholder="Hospital Name">
+                                <label for="hospital_name">Hospital Name</label>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="hospital_address" id="hospital_address" value="{{data.hospital_address}}" placeholder="Hospital Address">
+                                <label for="hospital_address">Hospital Address</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="city" id="city" value="{{data.city}}" placeholder="City">
+                                <label for="city">City</label>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="qualified" id="qualified" value="{{data.qualified}}" placeholder="Qualifications">
+                                <label for="qualified">Qualifications</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="experience" id="experience" value="{{data.experience}}" placeholder="Experience">
+                                <label for="experience">Experience</label>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="apt_fees" id="apt_fees" value="{{data.apt_fees}}" placeholder="Appointment Fee">
+                                <label for="apt_fees">Appointment Fee</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="abl_day" id="abl_day" value="{{data.abl_day}}" placeholder="Available Days">
+                                <label for="abl_day">Available Days</label>
+                            </div><br>
+                            <div class="form-floating">
+                                <input type="time" class="form-control" name="abl_time" id="abl_time" value="{{data.abl_time}}">
+                                <label for="abl_time">Available Timings</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="treat_cond" id="treat_cond" value="{{data.treat_cond}}" placeholder="Treatable Conditions">
+                                <label for="treat_cond">Treatable Conditions</label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feedback End -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+<script>
+$(".toggle-password").click(function() {
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  if ($("#mobile").attr("type") == "password") {
+    $("#mobile").attr("type", "text");
+  } else {
+    $("#mobile").attr("type", "password");
+  }
+});
+
+$(".toggle-password-2").click(function() {
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  if ($("#email").attr("type") == "password") {
+    $("#email").attr("type", "email");
+  }
+  else {
+    $("#email").attr("type", "password");
+  }
+});
+</script>
+
+{% endblock %}

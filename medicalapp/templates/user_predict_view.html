@@ -1,0 +1,143 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+  #active {
+    border-radius: 50%;
+  }
+
+  #inactive {
+    border-radius: 50%;
+  }
+  #active:hover {
+    cursor: default !important;
+  }
+  #inactive:hover {
+    cursor: default !important;
+  }
+
+  .table-responsive{
+    font-size:11px;
+  }
+  .material-symbols-outlined
+  {
+    font-size:14px;
+  }
+    td{
+    padding:0px;
+    }
+    .password{
+        display:none;
+    }
+    .text{
+      display:block;
+    }
+    .green-row{
+      color:white;
+      background-color:green!important;
+    }
+    .red-row{
+      color:white;
+      background-color:red!important;
+    }
+    .head-row{
+      color:white;
+      background-color:#165d5d!important;
+    }
+</style>
+<!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5 mt-4">
+            <h1 class="display-2 text-white mb-3 animated slideInDown">Predict History</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page">Predict History</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+<!-- Contact Start -->
+    <div class="container-fluid py-1">
+        <div class="card py-2">
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h2>Predict of <span style="color:red">{{register.user.first_name}}</span></h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="wow fadeIn" data-wow-delay="0.3s">
+                        <div class="feature-matchs">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Full Name</th>
+                                    <th>Email Id</th>
+                                    <th>Mobile No</th>
+                                    <th>Symptoms</th>
+                                    <th>Creation Date</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in data %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{i.register.user.first_name}}</td>
+                                    <td>
+                                        <span id="email-{{forloop.counter}}" class="password">{{i.register.user.username}}</span>
+                                        <button type="button" style="background-color:green" class="btn btn" id="email-btn-{{forloop.counter}}" onclick="togglePassword('email-{{forloop.counter}}', this.id)"><i class="fa fa-eye"></i></button>
+                                    </td>
+                                    <td>
+                                        <span id="mobile-{{forloop.counter}}" class="password">{{i.register.mobile}}</span>
+                                        <button type="button" style="background-color:green" class="btn btn" id="mobile-btn-{{forloop.counter}}" onclick="togglePassword('mobile-{{forloop.counter}}', this.id)"><i class="fa fa-eye"></i></button>
+                                    </td>
+                                    <td>{{i.symptoms}}</td>
+                                    <td>{{i.creationdate}}</td>
+                                    <td>
+                                        <a href="{% url 'detail_predict' i.id %}">
+                                            <button type="button" style="background-color:green" class="btn btn"><i class="fa fa-eye"></i>
+                                            </button>
+                                        </a>
+                                        <a href="{% url 'delete_pridict' i.id %}" onclick="return confirm('Are you sure?')">
+                                            <button type="button" style="background-color:red" class="btn btn"><i class="fa fa-trash"></i>
+                                            </button>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+<script>
+    function togglePassword(element_id, btnId){
+      var elementData = document.getElementById(element_id);
+      var elementBtn = document.getElementById(btnId);
+      console.log(elementData.classList.contains("password"))
+      if(elementData.classList.contains("password")){
+        elementData.classList.remove("password");
+        elementData.classList.add("text");
+        elementBtn.children[0].classList.add("fa-eye-slash");
+        elementBtn.children[0].classList.remove("fa-eye");
+      }
+      else{
+        elementData.classList.remove("text");
+        elementData.classList.add("password");
+        elementBtn.children[0].classList.remove("fa-eye-slash");
+        elementBtn.children[0].classList.add("fa-eye");
+      }
+    }
+  </script>
+
+{% endblock %}
