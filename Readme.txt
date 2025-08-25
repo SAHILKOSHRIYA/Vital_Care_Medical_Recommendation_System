@@ -1,6 +1,6 @@
 Admin
-	username=admin
-	password=admin
+	username=********
+	password=********
 User
 	username=harish@abc.com
 	password=harish
